@@ -1,26 +1,30 @@
 package com.tef.devsuperior.dsdelivery.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@Entity
+@Table
 public class Product implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
-    private String Descripiton;
+    private String Description;
     private String ImageUri;
 
 
     public Product() {
     }
 
-    public Product(Long id, String name, Double price, String descripiton, String imageUri) {
+    public Product(Long id, String name, Double price, String description, String imageUri) {
         this.id = id;
         this.name = name;
         this.price = price;
-        Descripiton = descripiton;
+        Description = description;
         ImageUri = imageUri;
     }
 
@@ -48,12 +52,12 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public String getDescripiton() {
-        return Descripiton;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDescripiton(String descripiton) {
-        Descripiton = descripiton;
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public String getImageUri() {
