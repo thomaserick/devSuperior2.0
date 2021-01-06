@@ -7,6 +7,7 @@ import com.tef.devsuperior.dsdelivery.entity.OrderStatus;
 import com.tef.devsuperior.dsdelivery.entity.Product;
 import com.tef.devsuperior.dsdelivery.repositories.OrderRepository;
 import com.tef.devsuperior.dsdelivery.repositories.ProductRepository;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,8 +26,7 @@ public class OrderService {
     private ProductRepository productRepository;
 
     @Transactional(readOnly = true)
-    public List<OrderDTO> findAll()
-    {
+    public List<OrderDTO> findAll() {
         List<Order> list = orderRepository.findOrdersWithProducts();
         return list.stream().map(OrderDTO::new).collect(Collectors.toList());
     }
@@ -41,6 +41,16 @@ public class OrderService {
             order.getProducts().add(product);
         }
 
+        order = orderRepository.save(order);
+
+        return new OrderDTO(order);
+    }
+
+    @Transactional
+    public OrderDTO setDelivered(Long id) {
+
+        Order order = orderRepository.getOne(id);
+        order.setStatus(OrderStatus.DELIVERED);
         order = orderRepository.save(order);
 
         return new OrderDTO(order);

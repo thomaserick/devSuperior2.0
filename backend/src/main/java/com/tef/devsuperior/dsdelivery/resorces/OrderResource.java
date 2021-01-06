@@ -2,6 +2,7 @@ package com.tef.devsuperior.dsdelivery.resorces;
 
 import com.tef.devsuperior.dsdelivery.dto.OrderDTO;
 import com.tef.devsuperior.dsdelivery.services.OrderService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,14 @@ public class OrderResource {
         dto = orderService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
+    }
+
+    @PutMapping("/{id}/delivered")
+    public ResponseEntity<OrderDTO> setDelivered(@PathVariable Long id)
+    {
+        OrderDTO dto = orderService.setDelivered(id);
+        return ResponseEntity.ok().body(dto);
+
     }
 
 }
