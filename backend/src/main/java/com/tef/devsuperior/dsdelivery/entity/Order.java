@@ -85,8 +85,8 @@ public class Order implements Serializable {
         this.status = status;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public Set<Product> getProducts() {
+        return products;
     }
 
     @Override
