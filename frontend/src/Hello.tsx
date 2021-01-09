@@ -1,0 +1,9 @@
+import App from "./App"
+
+function Hello()
+{
+return(
+    <h1>Componente Hello!</h1>
+)}
+
+export default Hello;
