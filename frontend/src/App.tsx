@@ -1,13 +1,13 @@
 import './App.css';
-import Hello from './Hello'
+import Navbar from './Navbar/navbar'
 
 function App() {
   return (
-    <div>
-     <Hello></Hello>
+  
+    <Navbar></Navbar>
+   
      
-     
-    </div>
+  
   );
 }
 

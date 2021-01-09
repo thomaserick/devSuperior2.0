@@ -5,6 +5,10 @@
 ### Ferramentas utilizadas:
 
 - ReacJs
+  - Component
+  - Props
+  - JSX
+  - State
 - NodeJs
 
 ### Comandos
@@ -17,3 +21,10 @@
   - npm start
 
 ### Checklist
+
+- Criando componente Header
+- Criando conteúdo da Página home
+- Criando Rodapé
+- Adicionando rotar na aplicação
+- Criando página de montar o pedido
+- Criando cabeçalho da pagina de pedidos
