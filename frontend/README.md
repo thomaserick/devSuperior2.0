@@ -17,6 +17,11 @@
 
   - npx create-react-app frondend --template typescript --use-npm
 
+- Router DOM
+
+  - npm install react-router-dom
+  -
+
 - Starter project
   - npm start
 
