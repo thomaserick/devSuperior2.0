@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchProducts } from '../api';
+import { fetchProducts, saveOrder } from '../api';
 import Footer from '../Footer/footer';
 import { checkIsSelected } from './helpers';
 import OrderLocation from './OrderLocation';
@@ -7,14 +7,16 @@ import './orders.css'
 import OrderSummary from './OrderSummary';
 import ProductsList from './ProductsList'
 import StepsHeader from './StepsHeader'
-import { OrderLocationdata, Product } from './types';
+import { OrderLocationData, Product } from './types';
+import { toast } from 'react-toastify';
 
 
 function Orders() {
 
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
-    const [orderLocation, setOrderLocation] = useState<OrderLocationdata>();
+    const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
+    const totalPrice = selectedProducts.reduce((sum, item) => { return sum + item.price }, 0)
 
     useEffect(() => {
         fetchProducts()
@@ -35,6 +37,22 @@ function Orders() {
         }
     }
 
+    const handleSubmit = () => {
+        const productsIds = selectedProducts.map(({ id }) => ({ id }));
+        const payload = {
+            ...orderLocation!,
+            products: productsIds
+        }
+
+        saveOrder(payload).then(() => {
+            toast.error('Pedido enviado com sucesso!');
+            setSelectedProducts([]);
+        })
+            .catch(() => {
+                toast.warning('Erro ao enviar pedido');
+            })
+
+    }
 
     return (
         <>
@@ -46,7 +64,10 @@ function Orders() {
                     selectedProducts={selectedProducts}
                 />
                 <OrderLocation onChangeLocation={location => setOrderLocation(location)} />
-                <OrderSummary />
+                <OrderSummary
+                    amount={selectedProducts.length}
+                    totalPrice={totalPrice}
+                    onSubmit={handleSubmit} />
             </div>
             <Footer />
         </>

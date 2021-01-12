@@ -26,9 +26,15 @@
     - npm install axios
 
   - Leaflet(Maps)
+
     - npm install leaft react-leaflet
+
   - React Select
+
     - npm install react-select @types/react-select
+
+  - React toast file
+    - npm install --save react-toastify
 
 - Starter project
   - npm start

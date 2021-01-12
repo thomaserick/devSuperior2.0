@@ -1,3 +1,4 @@
+import { formatPrice } from './helpers';
 import { Product } from './types';
 
 type Props = {
@@ -7,15 +8,7 @@ type Props = {
 
 }
 
-function formatPrice(price: number) {
-    const formatter = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2
-    });
 
-    return formatter.format(price)
-}
 
 
 function ProductCard({ product, onSelectProduct, isSelected }: Props) {
