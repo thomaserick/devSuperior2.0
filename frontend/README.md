@@ -10,6 +10,8 @@
   - JSX
   - State
 - NodeJs
+- Servidor de Hospedagem Netlify
+  - https://www.netlify.com/
 
 ### Comandos
 
