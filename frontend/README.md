@@ -22,7 +22,13 @@
   - npm install react-router-dom
 
   - Axios (Request Http)
+
     - npm install axios
+
+  - Leaflet(Maps)
+    - npm install leaft react-leaflet
+  - React Select
+    - npm install react-select @types/react-select
 
 - Starter project
   - npm start
@@ -35,3 +41,11 @@
 - Adicionando rotar na aplicação
 - Criando página de montar o pedido
 - Criando cabeçalho da pagina de pedidos
+
+**Helpers**
+
+- [React](https://pt-br.reactjs.org/docs/getting-started.html)
+
+- [React Leaflet(Maps)](https://react-leaflet.js.org/docs/start-introduction)
+
+- [Format GitHub](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
